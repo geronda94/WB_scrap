@@ -4,8 +4,8 @@ from parser_core.parse.parsing_html import son_page_html
 from parser_core.saving_html import save_html_page
 
 
-async def load_page(url, index,session: AsyncHTMLSession()):
-    session = session
+async def load_page(url, index):
+    session = AsyncHTMLSession()
     flag = False
     path_to_save = 'html_main'
     index+=2
@@ -27,13 +27,13 @@ async def load_page(url, index,session: AsyncHTMLSession()):
 
     finally:
         print(f'Прошелся по странице {index}, результат: ',flag)
+        await session.close()
 
 
 
 
-
-async def load_first_page(url, session: AsyncHTMLSession()):
-    session = session
+async def load_first_page(url):
+    session = AsyncHTMLSession()
     flag = False
     path_to_save = 'html_main'
     index =1
@@ -55,6 +55,7 @@ async def load_first_page(url, session: AsyncHTMLSession()):
 
     finally:
         print(f'Прошелся по главной странице, результат: ',flag)
+        await session.close()
         return son_page
 
 
