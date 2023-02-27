@@ -27,7 +27,7 @@ async def load_page(url, index):
 
     finally:
         print(f'Прошелся по странице {index}, результат: ',flag)
-        await session.close()
+
 
 
 
@@ -55,7 +55,7 @@ async def load_first_page(url):
 
     finally:
         print(f'Прошелся по главной странице, результат: ',flag)
-        await session.close()
+
         return son_page
 
 
