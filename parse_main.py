@@ -3,7 +3,7 @@ from requests_html import AsyncHTMLSession
 import aiofiles
 import os
 from headers import headers,cookies
-from parser_core.parse_functions import parse_first_page
+from parser_core.scrap_functions import parse_first_page
 from parser_core.saving_html import save_html_page
 
 
@@ -14,4 +14,7 @@ async def print_firs():
 
     await session.close()
 
-asyncio.run(print_firs())
+
+
+if __name__ == "__main__":
+    asyncio.run(print_firs())
