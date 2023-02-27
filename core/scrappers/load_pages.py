@@ -1,13 +1,13 @@
 from requests_html import AsyncHTMLSession
-
 from core.parse_func.parsing_pagination import son_page_html
 from core.saving_html import save_html_page
+from headers import cookies,headers
 
-
-async def load_page(url,):
+async def load_page(url, path):
     session = AsyncHTMLSession()
+
     flag = False
-    path_to_save = 'html_main'
+    path_to_save = path
     index = url.split('page=')[-1].split('.html')[0]
 
 
@@ -18,7 +18,6 @@ async def load_page(url,):
 
         await response.html.arender(sleep=0.5, keep_page=True, scrolldown=30)
         html_content = response.html.html
-
 
         await save_html_page(html_content, index, path_to_save=path_to_save)
         flag = True
@@ -33,10 +32,11 @@ async def load_page(url,):
 
 
 
-async def load_first_page(url):
+async def load_first_page(url, path):
     session = AsyncHTMLSession()
+
     flag = False
-    path_to_save = 'html_main'
+    path_to_save = path
     index =1
     son_page = 0
 
