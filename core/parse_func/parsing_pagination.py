@@ -8,7 +8,7 @@ import asyncio
 def son_page_from_html(html):
     soup = BeautifulSoup(html, 'lxml')
     find_pages = soup.find('div', class_="pageToInsert pagination__wrapper").find_all('a',
-                                                                                      class_='pagination-item pagination__item j-page')
+                            class_='pagination-item pagination__item j-page')
     son_page = max(int(i.text) for i in find_pages)
 
     return son_page
@@ -26,7 +26,7 @@ async def son_page_html(html):
 #Обычная функция на поиск последней странциы открытием сохраненной страницы
 def son_page(path='../html_main/page_1.html'):
     with open(path, 'r', encoding='utf-8') as file:
-        html= file.read()
+        html = file.read()
 
     soup = BeautifulSoup(html, 'lxml')
     find_pages = soup.find('div', class_="pageToInsert pagination__wrapper").find_all('a', class_='pagination-item pagination__item j-page')
