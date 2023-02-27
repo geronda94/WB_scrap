@@ -8,7 +8,7 @@ async def load_page(url, index):
     session = AsyncHTMLSession()
     flag = False
     path_to_save = 'html_main'
-    index+=2
+    index= url.split('page_')[-1].split('.html')[0]
 
 
 

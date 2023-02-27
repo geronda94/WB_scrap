@@ -39,7 +39,7 @@ async def parse_page(url, index):
 async def parse_pages(urls):
     tasks = []
     for index, url in enumerate(urls):
-        task = asyncio.create_task(parse_page(url, index))
+        task = asyncio.create_task(parse_page(url))
         tasks.append(task)
     await asyncio.gather(*tasks)
 
