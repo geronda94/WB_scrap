@@ -14,5 +14,9 @@ for index, val in enumerate(numbers):
         tasks=[]
 
 
+check = [True, True, True]
 
-
+if False not in check:
+    print('ok')
+else:
+    print(f'Мы уже собрали все возможные страницы дальше, нет товара')

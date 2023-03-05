@@ -1,21 +1,21 @@
-from bs4 import BeautifulSoup
-import asyncio
 import os
 
 def check_if_valid(path):
-    path = os.listdir(path)[1]
-    print(path)
+    path_file = os.listdir(path)[-1]
+    path_dir = path
     try:
-        with open(path, 'r', encoding='utf-8') as file:
+        with open(f'{path_dir}/{path_file}', 'r', encoding='utf-8') as file:
             html = file.read()
+    except Exception as ex:
+        print('Ошибка открытия файла ', ex)
+        print(path)
 
-    except:
-        return False
 
-    soup = BeautifulSoup(html, 'lxml')
 
-    class_error = soup.find('div', class_='error500__container')
-    if class_error:
+    chek_text ='Мы уже делаем все возможное, чтобы это исправить. Попробуйте повторить попытку позднее. А пока вы можете продолжить выбирать товары.'
+
+
+    if chek_text in html:
         return False
     else:
         return True
@@ -27,5 +27,3 @@ def runi():
 
 
 
-
-#asyncio.run(runi())
